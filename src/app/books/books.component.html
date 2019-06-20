@@ -1,0 +1,54 @@
+<div class="container-fluid" style="margin-top: 6rem;">
+    <div class="row">
+        <div class="col-lg-2 col-md-3">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h4 class="m-0 font-weight-bold text-primary">书籍搜索</h4>
+                </div>
+                <div class="card-body">
+                    <a>请输入搜索条件，可留空</a>
+                    <div class="md-form md-outline">
+                        <input type="text" id="bookname" class="form-control mb-4" placeholder="书名">
+                    </div>
+                    
+                    <div class="md-form md-outline">
+                        <input type="text" id="authorname" class="form-control mb-4" placeholder="作者名">
+                    </div>
+                    <div class="md-form md-outline">
+                        <input type="number" id="valueup" class="form-control mb-4" placeholder="价格上限">
+                    </div>
+                    <div class="md-form md-outline">
+                        <input type="number" id="valuedown" class="form-control mb-4" placeholder="价格下限">
+                    </div>
+
+                    <div class="md-form md-outline">
+                        <select class="browser-default custom-select">
+                            <option selected>排序方式</option>
+                            <option value="1">价格从低到高</option>
+                            <option value="2">价格从高到低</option>
+                            <option value="3">折扣从低到高</option>
+                            <option value="3">折扣从高到低</option>
+                        </select>
+                    </div>
+                    <div class="form-check" align="right">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                            允许模糊匹配
+                        </label>
+                    </div>
+                    <div align="right">
+                        <a href="#" class="btn btn-primary">查找</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-10 col-md-9">
+            <div class="row">
+                <div *ngFor="let number of [1,2,3,4,5]" class="col-lg-4 col-md-4" style="margin-bottom: 2rem;">
+                    <app-book></app-book>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>

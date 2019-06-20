@@ -1,0 +1,76 @@
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="height: 100%">
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="/" routerLinkActive="active">
+    <div class="sidebar-brand-icon rotate-n-15">
+      <i class="fas fa-laugh-wink"></i>
+    </div>
+    <div class="sidebar-brand-text mx-3">旧书交易 <sup>ZJU</sup></div>
+  </a>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item active">
+    <a class="nav-link" routerLink="/" routerLinkActive="active">
+      <i class="fas fa-fw fa-tachometer-alt"></i>
+      <span>Dashboard</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    旧书交易
+  </div>
+
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" routerLink="requests" routerLinkActive="active">
+      <i class="fas fa-fw fa-cog"></i>
+      <span>求购信息</span>
+    </a>
+  </li>
+
+  <!-- Nav Item - Utilities Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" routerLink="books" routerLinkActive="active">
+      <i class="fas fa-fw fa-wrench"></i>
+      <span>购书市场</span>
+    </a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    其他
+  </div>
+
+  <!-- Nav Item - Pages Collapse Menu -->
+  <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+      <i class="fas fa-fw fa-folder"></i>
+      <span>个人中心</span>
+    </a>
+    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+      <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">信息修改</h6>
+        <a class="collapse-item" routerLink="nickchange" routerLinkActive="active">修改昵称</a>
+        <a class="collapse-item" routerLink="passwdchange" routerLinkActive="active">修改密码</a>
+        <a class="collapse-item"  routerLink="forget-password" routerLinkActive="active">忘记密码</a>
+        <div class="collapse-divider"></div>
+        <h6 class="collapse-header">交易相关</h6>
+        <a class="collapse-item"  routerLink="customerdash" routerLinkActive="active">买方订单</a>
+        <a class="collapse-item"  routerLink="sellerdash" routerLinkActive="active">卖方订单</a>
+      </div>
+    </div>
+  </li>
+
+
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block">
+
+</ul>

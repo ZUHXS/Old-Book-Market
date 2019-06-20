@@ -1,0 +1,66 @@
+<!-- Default form register -->
+<div align="center">
+  <div class="container">
+      <div class="offset2 col-lg-8 col-md-8 mt-xl-5 mb-5">
+<form class="text-center border border-light p-5" [formGroup]="signupForm" (ngSubmit)="OnSubmit()">
+
+  <p class="h4 mb-4">注册</p>
+
+  <input type="text" id="defaultRegisterFormLastName" 
+    class="form-control mb-4" placeholder="昵称" formControlName="nick">
+
+  <!-- E-mail -->
+  <input type="email" id="email" class="form-control mb-4" 
+    placeholder="邮箱" formControlName="email">
+    <div *ngIf="email.invalid && (password.dirty || password.touched)">
+        <small class="form-text mb-4 important_true" style="color: 0xff0000 !important">
+            请输入正确的邮箱
+        </small>
+    </div>
+
+  <!-- Password -->
+  <input type="password" id="password" class="form-control mb-4" placeholder="密码" 
+    aria-describedby="defaultRegisterFormPasswordHelpBlock" formControlName="password">
+  <div *ngIf="password.invalid && (password.dirty || password.touched) ">
+      <small *ngIf="password.errors.required" class="form-text mb-4 important_true" style="color: 0xff0000 !important">
+          请输入密码
+      </small>
+      <small *ngIf="password.errors.minlength" class="form-text text-muted mb-4">
+          密码至少为8个字节
+      </small>
+  </div>
+
+  <input type="password" id="password2" class="form-control" placeholder="确认密码" 
+    aria-describedby="defaultRegisterFormPasswordHelpBlock" formControlName="password2">
+  <div *ngIf="(password2.invalid || this.signupForm.hasError('passwordNotEqual')) && (password2.dirty || password2.touched)">
+      <div *ngIf="(password2.invalid);else notMatch">
+        <small *ngIf="password2.errors.required" class="form-text mb-4 important_true" style="color: 0xff0000 !important">
+            请输入密码
+        </small>
+        <small *ngIf="password2.errors.minlength" class="form-text text-muted mb-4">
+            密码至少为8个字节
+        </small>
+      </div>
+      <ng-template #notMatch>
+        <small *ngIf="this.signupForm.hasError('passwordNotEqual')" class="form-text text-muted mb-4">
+            密码不匹配
+        </small>
+      </ng-template>
+      
+  </div>
+
+  <!-- Newsletter -->
+  <div class="custom-control custom-checkbox" style="margin-top: 1rem" align="right">
+      <input type="checkbox" class="custom-control-input" id="defaultRegisterFormNewsletter">
+      <label class="custom-control-label" for="defaultRegisterFormNewsletter">同意我们的用户<a href="" target="_blank">使用规则</a></label>
+  </div>
+
+  <!-- Sign up button -->
+  <button class="btn btn-info my-4 btn-block" type="submit" [disabled]="signupForm.invalid">注册</button>
+
+
+</form>
+<!-- Default form register -->
+</div>
+</div>
+</div>
