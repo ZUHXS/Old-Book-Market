@@ -1,3 +1,4 @@
+import { BookModule } from './book.module';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './book.component.html',
   styleUrls: ['./book.component.css']
 })
+
 export class BookComponent implements OnInit {
 
   constructor() { }
