@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { BookModule } from './../book/book.module';
 import { BookService } from './../book/book.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,6 +15,7 @@ export class BooksComponent implements OnInit {
   constructor(
     private bookService: BookService,
     private notifications: NotificationsService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -21,8 +23,10 @@ export class BooksComponent implements OnInit {
       res => {
         console.log('books result:', res);
         this.searchRes = res;
+        console.log(this.searchRes);
     }, err => {
-      this.notifications.error('拉取图书错误，请检查网络连接');
+      this.notifications.warn('未登录或登录已过期，请先登录');
+      this.authService.logout();
     });
   }
 

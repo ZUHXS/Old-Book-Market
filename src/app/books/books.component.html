@@ -43,10 +43,19 @@
             </div>
         </div>
 
+        <!--
         <div class="col-lg-10 col-md-9">
             <div class="row">
                 <div *ngFor="let number of [1,2,3,4,5]" class="col-lg-4 col-md-4" style="margin-bottom: 2rem;">
                     <app-book></app-book>
+                </div>
+            </div> 
+        </div>
+        -->
+        <div class="col-lg-10 col-md-9">
+            <div class="row">
+                <div *ngFor="let x of (searchRes?searchRes: [])" class="col-lg-4 col-md-4" style="margin-bottom: 2rem;">
+                    <app-book [BookInfo]='x'></app-book>
                 </div>
             </div> 
         </div>

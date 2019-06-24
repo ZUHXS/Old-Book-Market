@@ -1,16 +1,16 @@
 <div class="card shadow mb-4">
-    <div style="align-self: center">
     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-     <h3 class="m-0 font-weight-bold text-primary">数学分析</h3>
-    </div>
+     <h3 class="m-0 font-weight-bold text-primary">{{BookInfo.Book_Name}}</h3>
   </div>
     <div class="card-body">
         <div  align="center">
-          <img src="/assets/image/zuhxs.jpg" height="200">
+          <img src="{{BookInfo.ImageURL}}" height="200">
         </div>
-        <div class="md-form md-outline"><h5 class="card-title" align="center">原价：23.44元</h5></div>
-        <div class="md-form md-outline"><h5 class="card-title" align="center">现价：22.44元</h5></div>
-        <div class="md-form md-outline"><h5 class="card-title" align="center">卖家：魏耀东</h5></div>
+        <div class="md-form md-outline"><h5 class="card-title" align="center">原价：{{BookInfo.Exprice}}元</h5></div>
+        <div class="md-form md-outline"><h5 class="card-title" align="center">现价：{{BookInfo.Price}}元</h5></div>
+        <div class="md-form md-outline"><h5 class="card-title" align="center">卖家：{{BookInfo.PosterName}}</h5></div>
+        <div class="md-form md-outline"><h6 class="card-title" align="center">卖家留言：{{BookInfo.Description}}</h6></div>
+
     </div>
 </div>
 

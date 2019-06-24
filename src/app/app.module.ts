@@ -1,3 +1,5 @@
+import { CanActivateViaAuthGuardService } from './can-activate-via-auth-guard.service';
+import { AuthInterceptorService } from './auth-interceptor.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -11,7 +13,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {AuthService} from './auth.service';
 import * as $ from 'jquery';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChangepasswdComponent } from './changepasswd/changepasswd.component';
 import { ChangenickComponent } from './changenick/changenick.component';
 import { LoginComponent } from './login/login.component';
@@ -25,19 +27,25 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { NewbookComponent } from './newbook/newbook.component';
 import { SellerDashComponent } from './seller-dash/seller-dash.component';
 import { ChatComponent } from './chat/chat.component';
+import { IndexComponent } from './index/index.component';
+import { PeopleComponent } from './people/people.component';
 
 const appRoutes: Routes = [
-  { path: 'books', component: BooksComponent },
-  { path: 'nickchange', component: ChangenickComponent },
-  { path: 'passwdchange', component: ChangepasswdComponent },
+  { path: 'books', component: BooksComponent, canActivate: [CanActivateViaAuthGuardService]},
+  { path: 'nickchange', component: ChangenickComponent, canActivate: [CanActivateViaAuthGuardService] },
+  { path: 'passwdchange', component: ChangepasswdComponent, canActivate: [CanActivateViaAuthGuardService] },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'requests', component: RequestsComponent},
-  { path: 'customerdash', component: CustomerDashComponent},
+  { path: 'requests', component: RequestsComponent, canActivate: [CanActivateViaAuthGuardService]},
+  { path: 'customerdash', component: CustomerDashComponent, canActivate: [CanActivateViaAuthGuardService]},
   { path: '404', component: PagenotfoundComponent },
-  { path: 'newbook', component: NewbookComponent },
-  { path: 'sellerdash', component: SellerDashComponent },
-  { path: 'chat', component: ChatComponent },
+  { path: 'newbook', component: NewbookComponent, canActivate: [CanActivateViaAuthGuardService] },
+  { path: 'sellerdash', component: SellerDashComponent, canActivate: [CanActivateViaAuthGuardService] },
+  { path: 'chat', component: ChatComponent, canActivate: [CanActivateViaAuthGuardService] },
+  { path: '', component: IndexComponent },
+  { path: 'people/:id', component: PeopleComponent },
+
+
   { path: '**', component: PagenotfoundComponent },
 ];
 
@@ -59,7 +67,9 @@ const appRoutes: Routes = [
     PagenotfoundComponent,
     NewbookComponent,
     SellerDashComponent,
-    ChatComponent
+    ChatComponent,
+    IndexComponent,
+    PeopleComponent
   ],
   imports: [
     RouterModule.forRoot(
@@ -76,6 +86,12 @@ const appRoutes: Routes = [
   ],
   providers: [
     AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
+    CanActivateViaAuthGuardService,
   ],
   bootstrap: [AppComponent]
 })
