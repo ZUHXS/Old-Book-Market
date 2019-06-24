@@ -17,7 +17,6 @@ export class MsgService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' })
     };
     const data = {
-      CurUserId,
       ToUserId,
     };
     return this.http.post(apiURL + 'message', data, headers);

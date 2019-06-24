@@ -27,26 +27,24 @@
       </div>
     <div>
 
-    <div style="margin-top: 1rem;">
+    <div style="margin-top: 1rem;" *ngIf="msg?true:false">
       <h3>历史消息:</h3>
     </div>
     <div class="row mt-3">
-      <div *ngFor="let msg of [1,2,3]" class="col-md-12">
-        <div class="card col-md-11 offset-md-1" style="margin-bottom: 1rem;">
+      <div *ngFor="let x of (msg?msg:[])" class="col-md-12">
+        <div *ngIf="x.IfSelfSend" class="card col-md-11 offset-md-1" style="margin-bottom: 1rem;">
           <div>
-            <div style="margin-left: 1rem; margin-top: 1rem;">我：请问我刚下单的数学分析您发货了吗？</div>
-            <div style="text-align: right;"> 于 2019-06-24 20:47:03</div>
+            <div style="margin-right: 1rem; margin-top: 1rem; color: black; text-align: right;">我: {{ x.Content }}</div>
+            <div style="text-align: left;"> 于 {{ x.Date }}</div>
+          </div>
+        </div>
+        <div *ngIf="!x.IfSelfSend" class="card col-md-11" style="margin-bottom: 1rem;">
+          <div>
+            <div style="margin-left: 1rem; margin-top: 1rem; color: black">{{people.UserName}}: {{ x.Content }}</div>
+            <div style="text-align: right;"> 于 {{ x.Date }}</div>
           </div>
         </div>
       </div>
-      <div *ngFor="let msg of [1,2,3]" class="col-md-12">
-          <div class="card col-md-11" style="margin-bottom: 1rem;">
-            <div>
-              <div style="margin-left: 1rem; margin-top: 1rem;">魏耀东：请问我刚下单的数学分析您发货了吗？</div>
-              <div style="text-align: right;"> 于 2019-06-24 20:47:03</div>
-            </div>
-          </div>
-        </div>
     </div>
   </div>
 </div>

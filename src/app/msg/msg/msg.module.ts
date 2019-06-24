@@ -1,6 +1,6 @@
 export class MsgModule {
-  id: string;
-  ifselfsend: boolean;
-  content: string;
-  date: string;
+  MessageId: number;
+  IfSelfSend: boolean;
+  Date: string;
+  Content: string;
 }

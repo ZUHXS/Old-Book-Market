@@ -8,7 +8,7 @@
         </div>
         <div class="md-form md-outline"><h5 class="card-title" align="center">原价：{{BookInfo.Exprice}}元</h5></div>
         <div class="md-form md-outline"><h5 class="card-title" align="center">现价：{{BookInfo.Price}}元</h5></div>
-        <div class="md-form md-outline"><h5 class="card-title" align="center">卖家：{{BookInfo.PosterName}}</h5></div>
+        <div class="md-form md-outline"><h5 class="card-title" align="center">卖家：<a routerLink="/people/{{ BookInfo.Posterid }}" routerLinkActive="active">{{BookInfo.PosterName}}</a></h5></div>
         <div class="md-form md-outline"><h6 class="card-title" align="center">卖家留言：{{BookInfo.Description}}</h6></div>
 
     </div>

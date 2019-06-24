@@ -1,3 +1,4 @@
+import { MsgService } from './../msg/msg.service';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PeopleModule } from './people/people.module';
@@ -26,6 +27,7 @@ export class PeopleComponent implements OnInit {
     private getpeopleService: GetpeopleService,
     private notifications: NotificationsService,
     private authService: AuthService,
+    private msgService: MsgService,
   ) {
     this.id = route.snapshot.params.id;
   }
@@ -48,6 +50,17 @@ export class PeopleComponent implements OnInit {
         this.router.navigate(['']);
       }
     });
+
+    this.msgService.getMessage(this.id).subscribe(
+      res => {
+        console.log('message result: ', res);
+        this.msg = res as any;
+        console.log(this.msg);
+      }, err => {
+        this.notifications.warn('未登录或登录已过期，请先登录');
+        this.authService.logout();
+      }
+    );
   }
 
 }
