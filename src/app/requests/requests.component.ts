@@ -24,7 +24,7 @@ export class RequestsComponent implements OnInit {
     this.requestService.getRequests().subscribe(
       res => {
         console.log('reqeusts result: ', res);
-        this.requests = res;
+        this.requests = res as any;
       }, err => {
         if (err.status === 401) {
           this.notifications.warn('未登录或登录已过期，请先登录');

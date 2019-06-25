@@ -6,6 +6,23 @@ BS旧书交易网站前端 angular + bootstrap
 
 后端golang gin
 
+##### Roadmap
+
+- [x] 基本前端
+- [x] 用户登录注册
+- [x] 图书模块
+- [x] 求购市场
+- [ ] 搜索图书
+- [ ] 图书信息页
+- [ ] 卖家中心
+- [x] 个人信息+发送消息
+- [ ] 买家中心
+- [ ] 
+- [ ] 前端细化
+- [ ] 增加图书
+- [ ] 增加求购信息
+- [ ] 购买购买图书事件
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

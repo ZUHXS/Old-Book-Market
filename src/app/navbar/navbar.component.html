@@ -6,12 +6,12 @@
   </button>
 
   <!-- Topbar Search -->
-  <form class="form-inline my-1">
+  <form class="form-inline my-1" [formGroup]="form">
       <div class="md-form form-sm my-0">
         <input class="form-control" type="text" placeholder="查找书籍"
-          aria-label="Search">
+          aria-label="Search" formControlName="bookname">
       </div>
-      <button class="btn btn-outline-black btn-sm my-0" type="submit">查找</button>
+      <button class="btn btn-outline-black btn-sm my-0" type="submit" (click)='doSearch()' [disabled]="form.invalid">查找</button>
   </form> 
   <!-- Topbar Navbar -->
   <ul class="navbar-nav ml-auto">

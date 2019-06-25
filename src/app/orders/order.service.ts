@@ -18,4 +18,7 @@ export class OrderService {
   getInProcessOrders(): Observable<OrdersModule[]> {
     return this.http.get<OrdersModule[]>(apiURL + 'inprocessorder');
   }
+  getProcessedOrders(): Observable<OrdersModule[]> {
+    return this.http.get<OrdersModule[]>(apiURL + 'processedorder');
+  }
 }

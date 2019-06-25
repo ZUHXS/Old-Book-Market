@@ -89,28 +89,20 @@
         <thead>
           <tr>
             <th>书名</th>
+            <th>ISBN</th>
+            <th>上架日期</th>
             <th>原价</th>
             <th>出售价</th>
             <th>操作</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>数学分析</td>
-            <td>34元</td>
-            <td>20元</td>
-            <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">下架</a></td>
-          </tr>
-          <tr>
-            <td>数学分析</td>
-            <td>34元</td>
-            <td>20元</td>
-            <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">下架</a></td>
-          </tr>
-          <tr>
-            <td>数学分析</td>
-            <td>34元</td>
-            <td>20元</td>
+          <tr *ngFor="let x of (InProcessBooks?InProcessBooks:[])">
+            <td>{{x.BookName}}</td>
+            <td>{{x.ISBN}}</td>
+            <td>{{x.Date}}</td>
+            <td>{{x.ExPrice}}</td>
+            <td>{{x.Price}}</td>
             <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">下架</a></td>
           </tr>
         </tbody>
@@ -145,7 +137,7 @@
           <tr *ngFor="let x of (InProcessOrder?InProcessOrder:[])">
             <td>{{x.CustomerName}}</td>
             <td>{{x.BookName}}</td>
-            <td>{{x.Exprice}}</td>
+            <td>{{x.ExPrice}}</td>
             <td>{{x.Price}}</td>
             <td>{{x.StartDate}}</td>
             <td>{{x.OrderStatus===0 ? "等待卖家确认发货" : "等待买家确认收货"}}</td>
@@ -178,32 +170,18 @@
             <th>出售价</th>
             <th>订单日期</th>
             <th>确认日期</th>
+            <th>操作</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>魏耀东</td>
-            <td>数学分析</td>
-            <td>34元</td>
-            <td>20元</td>
-            <td>2019/04/25</td>
-            <td>2019/05/04</td>
-          </tr>
-          <tr>
-            <td>魏耀东</td>
-            <td>普通物理学</td>
-            <td>40元</td>
-            <td>14元</td>
-            <td>2018/07/25</td>
-            <td>2018/08/03</td>
-          </tr>
-          <tr>
-            <td>石攻玉</td>
-            <td>人工智能应用</td>
-            <td>88元</td>
-            <td>24元</td>
-            <td>2019/01/12</td>
-            <td>2019/02/03</td>
+          <tr *ngFor="let x of (ProcessedOrder?ProcessedOrder:[])">
+            <td>{{x.CustomerName}}</td>
+            <td>{{x.BookName}}</td>
+            <td>{{x.ExPrice}}</td>
+            <td>{{x.Price}}</td>
+            <td>{{x.StartDate}}</td>
+            <td>{{x.EndDate}}</td>
+            <td><a routerLink="/people/{{x.CustomerId}}" routerLinkActive="active" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">联系买家</a></td>
           </tr>
         </tbody>
       </table>

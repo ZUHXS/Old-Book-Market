@@ -31,6 +31,7 @@ import { IndexComponent } from './index/index.component';
 import { PeopleComponent } from './people/people.component';
 
 const appRoutes: Routes = [
+  { path: 'books/:name', component: BooksComponent, canActivate: [CanActivateViaAuthGuardService]},
   { path: 'books', component: BooksComponent, canActivate: [CanActivateViaAuthGuardService]},
   { path: 'nickchange', component: ChangenickComponent, canActivate: [CanActivateViaAuthGuardService] },
   { path: 'passwdchange', component: ChangepasswdComponent, canActivate: [CanActivateViaAuthGuardService] },

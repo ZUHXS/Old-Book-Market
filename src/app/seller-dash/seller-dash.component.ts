@@ -16,6 +16,8 @@ import { OrderService } from '../orders/order.service';
 export class SellerDashComponent implements OnInit {
 
   InProcessOrder: OrdersModule[];
+  ProcessedOrder: OrdersModule[];
+  InProcessBooks: BookModule[];
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -43,7 +45,42 @@ export class SellerDashComponent implements OnInit {
           this.router.navigate(['']);
         }
       }
-    )
+    );
+    this.orderService.getProcessedOrders().subscribe(
+      res => {
+        this.ProcessedOrder = res;
+        console.log(res);
+      }, err => {
+        if (err.status === 401) {
+          this.notifications.warn('未登录或登录已过期，请先登录');
+          this.authService.logout();
+        } else if (err.status === 404) {
+          this.notifications.warn('服务器故障，请稍后再试');
+          this.router.navigate(['']);
+        } else {
+          this.notifications.warn('未知错误，请联系管理员');
+          this.router.navigate(['']);
+        }
+      }
+    );
+
+    this.bookService.getUserBooks().subscribe(
+      res => {
+        this.InProcessBooks = res;
+        console.log(res);
+      }, err => {
+        if (err.status === 401) {
+          this.notifications.warn('未登录或登录已过期，请先登录');
+          this.authService.logout();
+        } else if (err.status === 404) {
+          this.notifications.warn('服务器故障，请稍后再试');
+          this.router.navigate(['']);
+        } else {
+          this.notifications.warn('未知错误，请联系管理员');
+          this.router.navigate(['']);
+        }
+      }
+    );
   }
 
 }
