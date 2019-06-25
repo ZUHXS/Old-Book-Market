@@ -6,7 +6,7 @@
           <div class="row">
 
             <div class="col-5">
-              <h3> <a routerLink="/user/1">{{ people.UserName }}</a></h3>
+              <h3> <a routerLink="/people/{{people.Userid}}">{{ people.UserName }}</a></h3>
             </div>
             <div class="col-7" style="text-align: right;">
               <div>
@@ -14,12 +14,13 @@
               </div>
             </div>
 
-            <form class="form-inline my-1" style="width: 100%; margin-left: 1rem;">
+            <form class="form-inline my-1" style="width: 100%; margin-left: 1rem;"
+              [formGroup]="msgForm" (ngSubmit)="OnSubmit()">
                 <div class="md-form form-sm my-0" style="width: 80%">
                   <input class="form-control" type="text" placeholder="输入您要发送的消息" block="true"
-                    aria-label="Search" style="width: 100%">
+                    aria-label="Search" style="width: 100%" formControlName="InputMsg">
                 </div>
-                <button class="btn btn-outline-black btn-sm my-0" type="submit" style="width: 15%; margin-left: 1rem;">发送信息</button>
+                <button class="btn btn-outline-black btn-sm my-0" type="submit" style="width: 15%; margin-left: 1rem;" [disabled]="msgForm.invalid">发送信息</button>
             </form> 
 
           </div>

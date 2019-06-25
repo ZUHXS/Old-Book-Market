@@ -1,3 +1,4 @@
+import { OrdersModule } from './../orders/orders.module';
 import { PeopleModule } from './people/people.module';
 import { PeopleComponent } from './people.component';
 import { HttpClient } from '@angular/common/http';

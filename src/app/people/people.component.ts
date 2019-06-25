@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MsgService } from './../msg/msg.service';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -19,8 +20,10 @@ export class PeopleComponent implements OnInit {
   id: string;
   people: PeopleModule;
   msg: MsgModule[];
+  msgForm: FormGroup;
 
   constructor(
+    public fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router,
     private http: HttpClient,
@@ -30,6 +33,37 @@ export class PeopleComponent implements OnInit {
     private msgService: MsgService,
   ) {
     this.id = route.snapshot.params.id;
+    this.msgForm = fb.group({
+      InputMsg: ['', [Validators.required]],
+    });
+  }
+
+  get InputMsg() {
+    return this.msgForm.get('InputMsg') as any;
+  }
+
+  OnSubmit() {
+    if (!this.msgForm.valid) {
+      return;
+    }
+    console.log('send messge' + this.InputMsg.value);
+    this.msgService.sendMessage(this.id, this.InputMsg.value).subscribe(
+      res => {
+        this.notifications.success('发送成功');
+        this.ngOnInit();
+      }, err => {
+        if (err.status === 401) {
+          this.notifications.warn('未登录或登录已过期，请先登录');
+          this.authService.logout();
+        } else if (err.status === 404) {
+          this.notifications.warn('用户不存在或输入为空');
+          this.router.navigate(['']);
+        } else {
+          this.notifications.warn('未知错误，请联系管理员');
+          this.router.navigate(['']);
+        }
+      }
+    );
   }
 
   ngOnInit() {
@@ -61,6 +95,7 @@ export class PeopleComponent implements OnInit {
         this.authService.logout();
       }
     );
+
   }
 
 }

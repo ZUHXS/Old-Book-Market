@@ -1,11 +1,11 @@
 <div class="card" style="margin-top: 2rem;">
     <div class="card-body">
-        <h2 class="card-title" align="center">{{ title }}</h2>
+        <h2 class="card-title" align="center">{{request.Title}}</h2>
         <div  align="center">
-          <div> by {{ poster }}</div>
+          <div>由<a routerLink="/people/{{request.UserId}}" routerLinkActive="active">{{request.UserName}}</a>发布于{{request.Date}}</div>
         </div>
         <div>
-          {{ content }}
+          {{request.Content}}
         </div>
     </div>
 </div>

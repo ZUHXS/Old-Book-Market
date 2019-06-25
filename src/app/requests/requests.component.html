@@ -1,7 +1,7 @@
 <div class="container-fluid" style="margin-top: 2rem; margin-bottom: 2rem;">
     <div class="row">
       <div class="col-lg-12 col-md-12">
-          <app-request *ngFor="let x of [1,2,3,4,5,6]" [poster]="'zuhxs'" [posterId]="123" [content]="'多少钱都行，考试急需'" [title]="'求购数学分析'" [postId]="321"></app-request>
+          <app-request *ngFor="let x of (requests?requests:[])" [request]='x'></app-request>
       </div>
     </div>
 </div>
