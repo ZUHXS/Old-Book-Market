@@ -51,7 +51,7 @@ export class SellerDashComponent implements OnInit {
       }
     );
 
-    this.orderService.getInProcessOrders().subscribe(
+    this.orderService.SellergetInProcessOrders().subscribe(
       res => {
         this.InProcessOrder = res;
         console.log(res);
@@ -68,7 +68,7 @@ export class SellerDashComponent implements OnInit {
         }
       }
     );
-    this.orderService.getProcessedOrders().subscribe(
+    this.orderService.SellergetProcessedOrders().subscribe(
       res => {
         this.ProcessedOrder = res;
         console.log(res);

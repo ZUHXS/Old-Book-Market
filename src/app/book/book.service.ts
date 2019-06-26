@@ -30,7 +30,7 @@ export class BookService {
   }
 
   getUserBooks(): Observable<BookModule[]> {
-    return this.http.get<BookModule[]>(apiURL + 'inprocessbooks');
+    return this.http.get<BookModule[]>(apiURL + 'sellerinprocessbooks');
   }
 
   getSearchBooks(BookName: string): Observable<BookModule[]> {

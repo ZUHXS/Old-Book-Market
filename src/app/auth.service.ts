@@ -9,7 +9,6 @@ import { NotificationsService } from 'angular2-notifications';
 
 @Injectable()
 export class AuthService {
-    API_URL = 'http://localhost:4201';
     TOKEN_KEY = 'token';
 
     constructor(

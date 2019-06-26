@@ -1,34 +1,18 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4" style="margin-top: 2rem">
-    <h1 class="h3 mb-0 text-gray-800">卖家中心</h1>
-    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-book fa-sm text-white-50"></i>发布新书</a>
+    <h1 class="h3 mb-0 text-gray-800">买家中心</h1>
+    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-book fa-sm text-white-50"></i>发布求购请求</a>
   </div>
 
   <!-- Content Row -->
   <div class="row">
 
-    <div class="col-xl-3 col-md-6 mb-4">
-      <div class="card border-left-primary shadow h-100 py-2">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earnings (Monthly)</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-calendar fa-2x text-gray-300"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-4 col-md-4 mb-4">
       <div class="card border-left-success shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Earnings (Annual)</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">我发起的求购请求数</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{CustomerInfo.PrePend}}</div>
             </div>
             <div class="col-auto">
               <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -38,15 +22,15 @@
       </div>
     </div>
 
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-4 col-md-4 mb-4">
       <div class="card border-left-info shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Pending Transactions</div>
+              <div class="text-xs font-weight-bold text-info text-uppercase mb-1">处理中的订单数</div>
               <div class="row no-gutters align-items-center">
                 <div class="col-auto">
-                  <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
+                  <div class="h5 mb-0 font-weight-bold text-gray-800">{{CustomerInfo.Pending}}</div>
                 </div>
               </div>
             </div>
@@ -58,13 +42,13 @@
       </div>
     </div>
 
-    <div class="col-xl-3 col-md-6 mb-4">
+    <div class="col-xl-4 col-md-4 mb-4">
       <div class="card border-left-warning shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="col mr-2">
-              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Finished Transactions</div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">19</div>
+              <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">完成的订单数</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{CustomerInfo.Finished}}</div>
             </div>
             <div class="col-auto">
               <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -76,42 +60,30 @@
   </div>
 
   <div class="d-sm-flex align-items-center justify-content-between mb-4" style="margin-top: 1rem">
-      <h1 class="h3 mb-0 text-gray-800">上架中的图书</h1>
+      <h1 class="h3 mb-0 text-gray-800">我的所有求购请求</h1>
   </div>
 
   <div class="card shadow mb-4">
     <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">上架中的图书</h6>
+      <h6 class="m-0 font-weight-bold text-primary">我的求购请求</h6>
     </div> 
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>书名</th>
-              <th>原价</th>
-              <th>出售价</th>
+              <th>主题</th>
+              <th>内容</th>
+              <th>日期</th>
               <th>操作</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>数学分析</td>
-              <td>34元</td>
-              <td>20元</td>
-              <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">下架</a></td>
-            </tr>
-            <tr>
-              <td>数学分析</td>
-              <td>34元</td>
-              <td>20元</td>
-              <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">下架</a></td>
-            </tr>
-            <tr>
-              <td>数学分析</td>
-              <td>34元</td>
-              <td>20元</td>
-              <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">下架</a></td>
+            <tr *ngFor="let x of (UserRequests?UserRequests:[])">
+              <td>{{x.Title}}</td>
+              <td>{{x.Content}}</td>
+              <td>{{x.Date}}</td>
+              <td><a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">删除请求</a></td>
             </tr>
           </tbody>
         </table>
@@ -119,10 +91,10 @@
     </div>
   </div>
 
-  <div class="d-sm-flex align-items-center justify-content-between mb-4" style="margin-top: 1rem">
+<div class="d-sm-flex align-items-center justify-content-between mb-4" style="margin-top: 1rem">
     <h1 class="h3 mb-0 text-gray-800">处理中的订单</h1>
-</div>
-
+  </div>
+  
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="m-0 font-weight-bold text-primary">处理中的订单</h6>
@@ -132,94 +104,66 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>买家</th>
+              <th>卖家</th>
               <th>书名</th>
               <th>原价</th>
               <th>出售价</th>
               <th>订单日期</th>
               <th>订单状态</th>
+              <th>操作</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>魏耀东</td>
-              <td>数学分析</td>
-              <td>34元</td>
-              <td>20元</td>
-              <td>2019/04/25</td>
-              <td>等待卖家确认发货</td>
-            </tr>
-            <tr>
-              <td>魏耀东</td>
-              <td>普通物理学</td>
-              <td>40元</td>
-              <td>14元</td>
-              <td>2018/07/25</td>
-              <td>等待买家确认收货</td>
-            </tr>
-            <tr>
-              <td>石攻玉</td>
-              <td>人工智能应用</td>
-              <td>88元</td>
-              <td>24元</td>
-              <td>2019/01/12</td>
-              <td>等待买家确认发货</td>
+            <tr *ngFor="let x of (InProcessOrder?InProcessOrder:[])">
+              <td><a routerLink="/people/{{ x.SellerId }}" routerLinkActive="active" style="color:#4468da">{{x.SellerName}}</a></td>
+              <td><a routerLink="/bookinfo/{{ x.BookId }}" routerLinkActive="active" style="color:#4468da">{{x.BookName}}</a></td>
+              <td>{{x.ExPrice}}</td>
+              <td>{{x.Price}}</td>
+              <td>{{x.StartDate}}</td>
+              <td>{{x.OrderStatus===1 ? "等待卖家确认发货" : "等待买家确认收货"}}</td>
+              <td *ngIf="x.OrderStatus===1"><a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">确认收到</a></td>
+              <td *ngIf="x.OrderStatus===0"><a routerLink="/people/{{x.SellerId}}" routerLinkActive="active" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">联系卖家</a></td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
   </div>
-
-
   <div class="d-sm-flex align-items-center justify-content-between mb-4" style="margin-top: 1rem">
-    <h1 class="h3 mb-0 text-gray-800">已完成的订单</h1>
-</div>
-
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">已完成的订单</h6>
-    </div> 
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <thead>
-            <tr>
-              <th>买家</th>
-              <th>书名</th>
-              <th>原价</th>
-              <th>出售价</th>
-              <th>订单日期</th>
-              <th>确认日期</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>魏耀东</td>
-              <td>数学分析</td>
-              <td>34元</td>
-              <td>20元</td>
-              <td>2019/04/25</td>
-              <td>2019/05/04</td>
-            </tr>
-            <tr>
-              <td>魏耀东</td>
-              <td>普通物理学</td>
-              <td>40元</td>
-              <td>14元</td>
-              <td>2018/07/25</td>
-              <td>2018/08/03</td>
-            </tr>
-            <tr>
-              <td>石攻玉</td>
-              <td>人工智能应用</td>
-              <td>88元</td>
-              <td>24元</td>
-              <td>2019/01/12</td>
-              <td>2019/02/03</td>
-            </tr>
-          </tbody>
-        </table>
+      <h1 class="h3 mb-0 text-gray-800">已完成的订单</h1>
+    </div>
+    
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">已完成的订单</h6>
+      </div> 
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>卖家</th>
+                <th>书名</th>
+                <th>原价</th>
+                <th>出售价</th>
+                <th>订单日期</th>
+                <th>确认日期</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let x of (ProcessedOrder?ProcessedOrder:[])">
+                <td><a routerLink="/people/{{ x.SellerId }}" routerLinkActive="active" style="color:#4468da">{{x.SellerName}}</a></td>
+                <td><a routerLink="/bookinfo/{{ x.BookId }}" routerLinkActive="active" style="color:#4468da">{{x.BookName}}</a></td>
+                <td>{{x.ExPrice}}</td>
+                <td>{{x.Price}}</td>
+                <td>{{x.StartDate}}</td>
+                <td>{{x.EndDate}}</td>
+                <td><a routerLink="/people/{{x.SellerId}}" routerLinkActive="active" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">联系卖家</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
+    

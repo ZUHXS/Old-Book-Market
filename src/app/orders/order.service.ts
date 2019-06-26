@@ -15,10 +15,18 @@ export class OrderService {
     private http: HttpClient
   ) { }
 
-  getInProcessOrders(): Observable<OrdersModule[]> {
-    return this.http.get<OrdersModule[]>(apiURL + 'inprocessorder');
+  SellergetInProcessOrders(): Observable<OrdersModule[]> {
+    return this.http.get<OrdersModule[]>(apiURL + 'sellerinprocessorder');
   }
-  getProcessedOrders(): Observable<OrdersModule[]> {
-    return this.http.get<OrdersModule[]>(apiURL + 'processedorder');
+  SellergetProcessedOrders(): Observable<OrdersModule[]> {
+    return this.http.get<OrdersModule[]>(apiURL + 'sellerprocessedorder');
   }
+
+  CustomergetInProcessOrders(): Observable<OrdersModule[]> {
+    return this.http.get<OrdersModule[]>(apiURL + 'customerinprocessorder');
+  }
+  CustomergetProcessedOrders(): Observable<OrdersModule[]> {
+    return this.http.get<OrdersModule[]>(apiURL + 'customerprocessedorder');
+  }
+
 }

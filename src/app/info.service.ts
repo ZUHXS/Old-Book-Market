@@ -16,4 +16,7 @@ export class InfoService {
   getSellerInfo(): Observable<InfoModule> {
     return this.http.get<InfoModule>(apiURL + 'sellerinfo');
   }
+  getCustomerInfo(): Observable<InfoModule> {
+    return this.http.get<InfoModule>(apiURL + 'customerinfo');
+  }
 }
