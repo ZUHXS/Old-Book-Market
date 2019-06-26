@@ -3,28 +3,23 @@
 <div align="center">
   <div class="container">
   <div class="offset2 col-lg-8 col-md-8 mt-xl-5 mb-5">
-      <form class="text-center border border-light p-5">
-          <p class="h4 mb-4">发布新书</p>
+      <form class="text-center border border-light p-5" [formGroup]="form">
+          <p class="h2 mb-4">发布新书</p>
           <!-- Password -->
-          <input type="text" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="书名">
-          <input type="text" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="ISBN码">
-          <input type="text" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="原价">
-          <input type="text" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="售价">
-          <input type="text" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="图书图片链接">
-
-
-
-          <div class="d-flex justify-content-around">
-              <div>
-              </div>
-              <div>
-                  <!-- Forgot password -->
-                  <a href="" align="right">忘记密码？</a>
-              </div>
-          </div>
-      
+          <div align="left"><label for="disabledSelect">书名<a style="color: red">*</a></label></div>
+          <input formControlName="BookName" type="text" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="请输入书籍名称">
+          <div align="left"><label for="disabledSelect">ISBN码<a style="color: red">*</a></label></div>
+          <input formControlName="ISBN" type="text" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="请输入以978开头的ISBN码">
+          <div align="left"><label for="disabledSelect">原价<a style="color: red">*</a></label></div>
+          <input formControlName="ExPrice" type="text" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="请输入书上标注的价格">
+          <div align="left"><label for="disabledSelect">售价<a style="color: red">*</a></label></div>
+          <input formControlName="Price" type="text" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="请输入你出售的意向价格">
+          <div align="left"><label for="disabledSelect">图书图片链接<a style="color: red">*</a></label></div>
+          <input formControlName="ImageURL" type="text" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="请到网上找到一张图片，或上传CDN">
+          <div align="left"><label for="disabledSelect">书籍介绍<a style="color: red">*</a></label></div>
+          <input formControlName="Description" type="text" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="请简要描述一下这本书">
           <!-- Sign in button -->
-          <button class="btn btn-info btn-block my-4" type="submit">确认</button>
+          <button class="btn btn-info btn-block my-4" type="submit" (click)='OnSubmit()'>确认发布</button>
       
       </form>
   <!-- Default form login -->

@@ -1,0 +1,27 @@
+<!-- Default form login -->
+
+<div align="center">
+    <div class="container">
+    <div class="offset2 col-lg-8 col-md-8 mt-xl-5 mb-5">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+             <h3 class="m-0 font-weight-bold text-primary">{{BookInfo.BookName}}</h3>
+          </div>
+            <div class="card-body">
+                <div  align="center">
+                  <img src="{{BookInfo.ImageURL}}" height="200">
+                </div>
+                <div class="md-form md-outline"><h5 class="card-title" align="center">原价：{{BookInfo.ExPrice}}元</h5></div>
+                <div class="md-form md-outline"><h5 class="card-title" align="center">现价：{{BookInfo.Price}}元</h5></div>
+                <div class="md-form md-outline"><h5 class="card-title" align="center">ISBN：{{BookInfo.ISBN}}</h5></div>
+                <div class="md-form md-outline"><h5 class="card-title" align="center">上架日期：{{BookInfo.Date}}</h5></div>
+                <div class="md-form md-outline"><h5 class="card-title" align="center">卖家：<a routerLink="/people/{{ BookInfo.PosterId }}" routerLinkActive="active">{{BookInfo.PosterName}}</a></h5></div>
+                <div class="md-form md-outline"><h6 class="card-title" align="center">卖家留言：{{BookInfo.Description}}</h6></div>
+                <button style="width:100%;" type="submit" class="btn btn-primary" (click)='goBack()'>返回</button>
+            </div>
+        </div>
+        
+    <!-- Default form login -->
+    </div>
+    </div>
+  </div>

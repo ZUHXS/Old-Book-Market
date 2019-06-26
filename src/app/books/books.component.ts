@@ -45,6 +45,29 @@ export class BooksComponent implements OnInit {
     }
   }
 
+  BuyBook(bookid: string) {
+    this.bookService.BuyBook(bookid).subscribe(
+      res => {
+        this.notifications.success('购买成功，请联系卖家发货');
+        console.log(res);
+      }, err => {
+        if (err.status === 401) {
+          this.notifications.warn('未登录或登录已过期，请先登录');
+          this.authService.logout();
+        } else if (err.status === 412) {
+          this.notifications.warn('参数错误，请重试');
+          this.router.navigate(['']);
+        } else if (err.status === 404) {
+          this.notifications.warn('未知错误');
+          this.router.navigate(['']);
+        } else {
+          this.notifications.warn('未知错误，请联系管理员');
+          this.router.navigate(['']);
+        }
+      }
+    );
+  }
+
   doSearch() {
     const val = this.form.value;
     this.bookService.getSearchBooks(val.bookname).subscribe(

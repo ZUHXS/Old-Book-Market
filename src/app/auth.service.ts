@@ -1,3 +1,4 @@
+import { apiURL } from './config/config.module';
 import { BookModule } from './book/book.module';
 import { Injectable } from '@angular/core';
 // import { RequestOptions, Response } from '@angular/http';
@@ -41,7 +42,7 @@ export class AuthService {
           password: pass
       };
 
-      this.http.post(this.API_URL + '/login', data, headers).subscribe(
+      this.http.post(apiURL + 'login', data, headers).subscribe(
           (res: any) => {
               localStorage.setItem(this.TOKEN_KEY, res.token);
               this.notificationsService.success('登陆成功');
@@ -62,7 +63,7 @@ export class AuthService {
             nickname
         };
 
-        this.http.post(this.API_URL + '/signup', data, headers).subscribe(
+        this.http.post(apiURL + 'signup', data, headers).subscribe(
             (res: any) => {
                 localStorage.setItem(this.TOKEN_KEY, res.token);
                 this.notificationsService.success('注册成功，跳转登录主页');

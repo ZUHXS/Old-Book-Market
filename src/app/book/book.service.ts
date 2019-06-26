@@ -21,6 +21,10 @@ export class BookService {
     private http: HttpClient
   ) { }
 
+  getBook(id: string): Observable<BookModule> {
+    return this.http.get<BookModule>(apiURL + 'getbook/' + id);
+  }
+
   getBooks(): Observable<BookModule[]> {
     return this.http.get<BookModule[]>(apiURL + 'getbook/all');
   }
@@ -37,6 +41,32 @@ export class BookService {
       BookName
     };
     return this.http.post<BookModule[]>(apiURL + 'searchboook', data, headers);
+  }
+
+  AddBook(BookName: string, ExPrice: string, Price: string,
+          ISBN: string, ImageURL: string, Description: string) {
+    const headers = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' })
+    };
+    const data = {
+      BookName,
+      ExPrice,
+      Price,
+      ISBN,
+      ImageURL,
+      Description,
+    };
+    return this.http.post(apiURL + 'addbook', data, headers);
+  }
+
+  BuyBook(BookId: string) {
+    const headers = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Cache-Control': 'no-cache' })
+    };
+    const data = {
+      BookId,
+    };
+    return this.http.post(apiURL + 'buybook', data, headers);
   }
 }
 

@@ -29,6 +29,7 @@ import { SellerDashComponent } from './seller-dash/seller-dash.component';
 import { ChatComponent } from './chat/chat.component';
 import { IndexComponent } from './index/index.component';
 import { PeopleComponent } from './people/people.component';
+import { BookinfoComponent } from './bookinfo/bookinfo.component';
 
 const appRoutes: Routes = [
   { path: 'books/:name', component: BooksComponent, canActivate: [CanActivateViaAuthGuardService]},
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
   { path: 'chat', component: ChatComponent, canActivate: [CanActivateViaAuthGuardService] },
   { path: '', component: IndexComponent },
   { path: 'people/:id', component: PeopleComponent },
+  { path: 'bookinfo/:id', component: BookinfoComponent },
 
 
   { path: '**', component: PagenotfoundComponent },
@@ -70,7 +72,8 @@ const appRoutes: Routes = [
     SellerDashComponent,
     ChatComponent,
     IndexComponent,
-    PeopleComponent
+    PeopleComponent,
+    BookinfoComponent
   ],
   imports: [
     RouterModule.forRoot(
